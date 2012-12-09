@@ -59,7 +59,7 @@ Usage : ruby make-rbz.rb [OPTIONS]
 * `-r`, `--read-stdin`
     * Read the RBZ filename from STDIN
     * Example
-        * `git describe | ruby make-rbz.rb -f` may produce `v1.0.0.rbz`
+        * `git describe | ruby make-rbz.rb -r` may produce `v1.0.0.rbz`
     * `.rbz` will be automatically added if excluded
 * `-i`, `--ignore`
     * Add given glob patterns (separated with a `,`) to the ignore list
