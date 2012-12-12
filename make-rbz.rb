@@ -14,7 +14,7 @@
 require 'optparse'
 
 REPO_NAME = File.basename(File.expand_path('.'))
-VERSION = '1.0.1'
+MAKE_RBZ_VERSION = '1.0.3'
 
 ###############################################################################
 # Begin Interface Definitions
@@ -40,7 +40,6 @@ class BaseRBZMaker
         @output_directory = '.'
         @output_name = nil
         @source_directory = 'src'
-        @verbose = false
         @force_overwrite = false
         @strict = true
         @ignore = []
@@ -148,7 +147,7 @@ class RBZMaker_1_9 < BaseRBZMaker
         begin
             require 'zip/zip'
         rescue => e
-            puts "Error - zip/zip required but failed to load (gem install rubyzip)"
+            abort("Error - zip/zip required but failed to load (gem install rubyzip)")
         end
     end
 
@@ -163,7 +162,6 @@ class RBZMaker_1_9 < BaseRBZMaker
             end
         }
     end
-
 end
 
 class RBZMaker_1_8 < BaseRBZMaker
@@ -172,7 +170,7 @@ class RBZMaker_1_8 < BaseRBZMaker
         begin
             require 'zip/zip'
         rescue => e
-            puts "Error - zip/zip required but failed to load (gem install rubyzip2)"
+            abort("Error - zip/zip required but failed to load (gem install rubyzip2)")
         end
     end
 
@@ -218,7 +216,6 @@ RBZMaker.setup()
 
 
 interface = RBZMaker.new()
-interface.verbose = true
 
 OptionParser.new() {|opts|
     opts.banner = "Usage : ruby #{File.basename(__FILE__)} [OPTIONS]"
